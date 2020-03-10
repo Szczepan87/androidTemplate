@@ -34,8 +34,14 @@ dependencies {
 
     // Koin for Android
     implementation "org.koin:koin-android:$koin_version"
+    // or Koin for Lifecycle scoping
+    implementation "org.koin:koin-android-scope:$koin_version"
+    // or Koin for Android Architecture ViewModel
+    implementation "org.koin:koin-android-viewmodel:$koin_version"
 
     testImplementation 'junit:junit:4.12'
+    // for Koin testing
+    testImplementation "org.koin:koin-test:$koin_version"
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
