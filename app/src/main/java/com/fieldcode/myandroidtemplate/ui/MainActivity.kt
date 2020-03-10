@@ -1,8 +1,9 @@
-package com.fieldcode.myandroidtemplate
+package com.fieldcode.myandroidtemplate.ui
 
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.fieldcode.myandroidtemplate.R
 import org.koin.android.ext.android.inject
 
 class MainActivity : AppCompatActivity() {

@@ -7,13 +7,13 @@
 
         <variable
             name="viewModel"
-            type="com.fieldcode.myandroidtemplate.CreateNoteViewModel" />
+            type="com.fieldcode.myandroidtemplate.ui.CreateNoteViewModel" />
     </data>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".CreateNoteFragment">
+        tools:context=".ui.CreateNoteFragment">
 
         <TextView
             android:layout_width="match_parent"

@@ -1,4 +1,4 @@
-package com.fieldcode.myandroidtemplate
+package com.fieldcode.myandroidtemplate.ui
 
 import androidx.lifecycle.ViewModel
 
