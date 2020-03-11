@@ -2,6 +2,8 @@ package com.fieldcode.myandroidtemplate.di
 
 import android.content.Context
 import android.content.SharedPreferences
+import androidx.room.Room
+import com.fieldcode.myandroidtemplate.repository.NoteDatabase
 import com.fieldcode.myandroidtemplate.ui.CreateNoteViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.viewmodel.dsl.viewModel
@@ -12,4 +14,11 @@ val appModule = module {
         androidContext().getSharedPreferences("SharedPreferences", Context.MODE_PRIVATE)
     }
     viewModel { CreateNoteViewModel() }
+    single {
+        Room.databaseBuilder(
+            androidContext(),
+            NoteDatabase::class.java,
+            "note-database"
+        ).build()
+    }
 }
