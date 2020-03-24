@@ -9,16 +9,3 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
-val appModule = module {
-    single<SharedPreferences> {
-        androidContext().getSharedPreferences("SharedPreferences", Context.MODE_PRIVATE)
-    }
-    viewModel { CreateNoteViewModel() }
-    single {
-        Room.databaseBuilder(
-            androidContext(),
-            NoteDatabase::class.java,
-            "note-database"
-        ).build()
-    }
-}

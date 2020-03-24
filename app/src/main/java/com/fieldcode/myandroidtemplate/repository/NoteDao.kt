@@ -16,7 +16,7 @@ interface NoteDao {
     fun getById(noteId: Int): Note
 
     @Query("SELECT * FROM note WHERE title LIKE :title")
-    fun getByTitle(title: String): Note
+    fun getByTitle(title: String): List<Note>
 
     @Insert
     fun insertNote(note: Note)
