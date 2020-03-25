@@ -1,10 +1,13 @@
 package com.fieldcode.myandroidtemplate.ui
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.fieldcode.myandroidtemplate.model.Note
 import com.fieldcode.myandroidtemplate.repository.NoteDatabase
 import com.fieldcode.myandroidtemplate.utility.empty
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import java.util.Date
 
 class CreateNoteViewModel(private val database: NoteDatabase) : ViewModel() {
@@ -20,6 +23,13 @@ class CreateNoteViewModel(private val database: NoteDatabase) : ViewModel() {
             noteTitle.value ?: String.empty,
             noteContent.value ?: String.empty
         )
-        database.noteDao().insertNote(note)
+        GlobalScope.launch { database.noteDao().insertNote(note) }
+        // todo move to note lists
+        GlobalScope.launch {
+            Log.d(
+                "DATABASE:\n",
+                "${database.noteDao().getAll().size }}"
+            )
+        }
     }
 }

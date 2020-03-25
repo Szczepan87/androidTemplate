@@ -10,17 +10,17 @@ import com.fieldcode.myandroidtemplate.model.Note
 interface NoteDao {
 
     @Query("SELECT * FROM note")
-    fun getAll(): List<Note>
+    suspend fun getAll(): List<Note>
 
     @Query("SELECT * FROM note WHERE uid = :noteId")
-    fun getById(noteId: Int): Note
+    suspend fun getById(noteId: Int): Note
 
     @Query("SELECT * FROM note WHERE title LIKE :title")
-    fun getByTitle(title: String): List<Note>
+    suspend fun getByTitle(title: String): List<Note>
 
     @Insert
-    fun insertNote(note: Note)
+    suspend fun insertNote(note: Note)
 
     @Delete
-    fun delete(note: Note)
+    suspend fun delete(note: Note)
 }
