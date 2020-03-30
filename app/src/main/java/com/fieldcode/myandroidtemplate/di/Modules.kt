@@ -15,19 +15,16 @@ val appModule = module {
     }
 }
 
-val viewModelModule = module {
+val databaseModule = module {
+    single {
+        provideNoteDAO(androidContext())
+    }
     viewModel { CreateNoteViewModel(get()) }
 }
 
-val databaseModule = module {
-    single {
-        provideDatabase(androidContext())
-    }
-}
-
-private fun provideDatabase(context: Context) = Room.databaseBuilder(
+private fun provideNoteDAO(context: Context) = Room.databaseBuilder(
     context,
     NoteDatabase::class.java,
     "note-database"
 ).fallbackToDestructiveMigration()
-    .build()
+    .build().noteDao()

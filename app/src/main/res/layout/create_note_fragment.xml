@@ -32,7 +32,7 @@
                 android:id="@+id/note_title_text_input"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@{viewModel.noteTitle}" />
+                android:text="@={viewModel.noteTitle}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -43,7 +43,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/note_confirm_FAB"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/note_title_text_input_layout">
@@ -52,7 +52,7 @@
                 android:id="@+id/note_content_input_text"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@{viewModel.noteContent}" />
+                android:text="@={viewModel.noteContent}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
