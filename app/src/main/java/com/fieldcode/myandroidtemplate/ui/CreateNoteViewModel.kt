@@ -24,8 +24,10 @@ class CreateNoteViewModel(private val noteDAO: NoteDao) : ViewModel() {
             content = noteContent.value ?: String.empty
         )
 
-        viewModelScope.launch { saveNote(note) }
-        // todo move to note lists
+        val saveNoteJob = viewModelScope.launch { saveNote(note) }
+        if (saveNoteJob.isCompleted) {
+            // todo move to note lists
+        }
     }
 
     private suspend fun saveNote(note: Note) {

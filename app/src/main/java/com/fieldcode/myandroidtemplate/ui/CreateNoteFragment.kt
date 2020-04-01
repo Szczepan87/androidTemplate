@@ -37,6 +37,7 @@ class CreateNoteFragment : Fragment() {
             viewModel = this@CreateNoteFragment.viewModel
         }
         // TODO: Use the ViewModel
+
     }
 
 }
