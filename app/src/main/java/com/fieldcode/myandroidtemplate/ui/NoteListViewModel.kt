@@ -13,7 +13,6 @@ import kotlinx.coroutines.withContext
 class NoteListViewModel(private val noteDao: NoteDao) : ViewModel() {
     lateinit var provideDatabaseData: Job
     val notesList = MutableLiveData<MutableList<Note>>(provideList())
-    val addNewNoteLiveData = MutableLiveData<Boolean>(false)
 
     private fun provideList(): MutableList<Note> {
         var listFromDatabase = mutableListOf<Note>()

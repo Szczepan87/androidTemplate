@@ -7,9 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import org.koin.android.viewmodel.ext.android.getViewModel
-
 import com.fieldcode.myandroidtemplate.R
 import com.fieldcode.myandroidtemplate.databinding.NotesListFragmentBinding
+import com.fieldcode.myandroidtemplate.utility.NoteAdapter
+import com.fieldcode.myandroidtemplate.utility.navigateTo
 
 
 class NoteListFragment : Fragment() {
@@ -29,9 +30,12 @@ class NoteListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel = getViewModel()
+        val listOfNotes = viewModel.notesList.value
         with(binding) {
             lifecycleOwner = this@NoteListFragment
             viewModel = this@NoteListFragment.viewModel
+            noteListRecyclerView.adapter = NoteAdapter(listOfNotes ?: listOf())
+            noteListFAB.setOnClickListener { navigateTo(R.id.action_notesListFragment_to_createNoteFragment) }
         }
     }
 }
