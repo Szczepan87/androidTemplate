@@ -11,12 +11,11 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class NoteListViewModel(private val noteDao: NoteDao) : ViewModel() {
-    lateinit var provideDatabaseData: Job
-    val notesList = MutableLiveData<MutableList<Note>>(provideList())
+    val notesList = MutableLiveData<MutableList<Note>>().apply { value = provideList() }
 
     private fun provideList(): MutableList<Note> {
         var listFromDatabase = mutableListOf<Note>()
-        provideDatabaseData = viewModelScope.launch {
+       viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 listFromDatabase = noteDao.getAll().toMutableList()
             }

@@ -8,7 +8,10 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.fieldcode.myandroidtemplate.R
 import com.fieldcode.myandroidtemplate.databinding.CreateNoteFragmentBinding
+import com.fieldcode.myandroidtemplate.utility.navigateBack
+import com.fieldcode.myandroidtemplate.utility.navigateTo
 import org.koin.android.viewmodel.ext.android.getViewModel
+import java.util.*
 
 
 class CreateNoteFragment : Fragment() {
@@ -29,15 +32,17 @@ class CreateNoteFragment : Fragment() {
         return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         viewModel = getViewModel()
         with(binding) {
             lifecycleOwner = viewLifecycleOwner
             viewModel = this@CreateNoteFragment.viewModel
+            noteConfirmFAB.setOnClickListener {
+                viewModel?.saveNewNote()
+                if (viewModel?.saveNoteJob?.isCompleted == true)navigateBack()
+            }
         }
-        // TODO: Use the ViewModel
-
     }
 
 }

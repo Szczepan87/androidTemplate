@@ -7,6 +7,7 @@ import com.fieldcode.myandroidtemplate.model.Note
 import com.fieldcode.myandroidtemplate.repository.NoteDao
 import com.fieldcode.myandroidtemplate.utility.empty
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.util.Date
@@ -15,6 +16,7 @@ class CreateNoteViewModel(private val noteDAO: NoteDao) : ViewModel() {
 
     val noteTitle = MutableLiveData(String.empty)
     val noteContent = MutableLiveData(String.empty)
+    lateinit var saveNoteJob: Job
 
     fun saveNewNote() {
         val note = Note(
@@ -24,10 +26,7 @@ class CreateNoteViewModel(private val noteDAO: NoteDao) : ViewModel() {
             content = noteContent.value ?: String.empty
         )
 
-        val saveNoteJob = viewModelScope.launch { saveNote(note) }
-        if (saveNoteJob.isCompleted) {
-            // todo move to note lists
-        }
+        saveNoteJob = viewModelScope.launch { saveNote(note) }
     }
 
     private suspend fun saveNote(note: Note) {

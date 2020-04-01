@@ -31,10 +31,11 @@ class NoteListFragment : Fragment() {
 
         viewModel = getViewModel()
         val listOfNotes = viewModel.notesList.value
+        val adapter = NoteAdapter(listOfNotes ?: listOf())
         with(binding) {
             lifecycleOwner = this@NoteListFragment
             viewModel = this@NoteListFragment.viewModel
-            noteListRecyclerView.adapter = NoteAdapter(listOfNotes ?: listOf())
+            noteListRecyclerView.adapter = adapter
             noteListFAB.setOnClickListener { navigateTo(R.id.action_notesListFragment_to_createNoteFragment) }
         }
     }
