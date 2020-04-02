@@ -1,25 +1,16 @@
 package com.fieldcode.myandroidtemplate.ui
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.fieldcode.myandroidtemplate.model.Note
 import com.fieldcode.myandroidtemplate.repository.NoteDao
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlinx.coroutines.Dispatchers
 
 class NoteListViewModel(private val noteDao: NoteDao) : ViewModel() {
-    val notesList = MutableLiveData<MutableList<Note>>().apply { value = provideList() }
 
-    private fun provideList(): MutableList<Note> {
-        var listFromDatabase = mutableListOf<Note>()
-       viewModelScope.launch {
-            withContext(Dispatchers.IO) {
-                listFromDatabase = noteDao.getAll().toMutableList()
-            }
+    suspend fun provideDataFromDatabase(): List<Note> {
+        return withContext(Dispatchers.IO) {
+            noteDao.getAll()
         }
-        return listFromDatabase
     }
 }

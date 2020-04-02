@@ -1,6 +1,7 @@
 package com.fieldcode.myandroidtemplate.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,14 +13,18 @@ import com.fieldcode.myandroidtemplate.databinding.NotesListFragmentBinding
 import com.fieldcode.myandroidtemplate.model.Note
 import com.fieldcode.myandroidtemplate.utility.NoteAdapter
 import com.fieldcode.myandroidtemplate.utility.navigateTo
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import org.koin.android.viewmodel.ext.android.viewModel
 import java.util.*
 
 
 class NoteListFragment : Fragment() {
 
-    private lateinit var viewModel: NoteListViewModel
+    private val viewModel: NoteListViewModel by viewModel()
+    private val adapter = NoteAdapter()
     private lateinit var binding: NotesListFragmentBinding
-    private val mockedList = listOf<Note>(Note(0, Date(), "New note", "This is new note"))
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,10 +35,7 @@ class NoteListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        viewModel = getViewModel()
-        val listOfNotes = viewModel.notesList.value ?: mutableListOf<Note>()
-        val adapter = NoteAdapter(listOfNotes)
+        GlobalScope.launch { adapter.updateList(viewModel.provideDataFromDatabase()) }
         with(binding) {
             lifecycleOwner = this@NoteListFragment
             viewModel = this@NoteListFragment.viewModel
