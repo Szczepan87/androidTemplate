@@ -9,15 +9,17 @@ import androidx.databinding.DataBindingUtil
 import org.koin.android.viewmodel.ext.android.getViewModel
 import com.fieldcode.myandroidtemplate.R
 import com.fieldcode.myandroidtemplate.databinding.NotesListFragmentBinding
+import com.fieldcode.myandroidtemplate.model.Note
 import com.fieldcode.myandroidtemplate.utility.NoteAdapter
 import com.fieldcode.myandroidtemplate.utility.navigateTo
+import java.util.*
 
 
 class NoteListFragment : Fragment() {
 
     private lateinit var viewModel: NoteListViewModel
     private lateinit var binding: NotesListFragmentBinding
-
+    private val mockedList = listOf<Note>(Note(0, Date(), "New note", "This is new note"))
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,8 +32,8 @@ class NoteListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel = getViewModel()
-        val listOfNotes = viewModel.notesList.value
-        val adapter = NoteAdapter(listOfNotes ?: listOf())
+        val listOfNotes = viewModel.notesList.value ?: mutableListOf<Note>()
+        val adapter = NoteAdapter(listOfNotes)
         with(binding) {
             lifecycleOwner = this@NoteListFragment
             viewModel = this@NoteListFragment.viewModel

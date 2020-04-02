@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.fieldcode.myandroidtemplate.databinding.NoteCardBinding
 import com.fieldcode.myandroidtemplate.model.Note
 
-class NoteAdapter(private val notes: List<Note>) :
+class NoteAdapter(private val notes: MutableList<Note>) :
     RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
@@ -22,10 +22,11 @@ class NoteAdapter(private val notes: List<Note>) :
 
     inner class NoteViewHolder(val binding: NoteCardBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(note: Note) {
+        fun bind(noteItem: Note) {
             with(binding) {
-                noteCardTitleTextView.text = note.title
-                noteCardContentTextView.text = note.content
+                note = noteItem
+                noteCardTitleTextView.text = noteItem.title
+                noteCardContentTextView.text = noteItem.content
             }
 
         }
