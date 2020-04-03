@@ -13,7 +13,6 @@ import com.fieldcode.myandroidtemplate.utility.navigateTo
 import org.koin.android.viewmodel.ext.android.getViewModel
 import java.util.*
 
-
 class CreateNoteFragment : Fragment() {
 
     private lateinit var viewModel: CreateNoteViewModel
@@ -40,7 +39,7 @@ class CreateNoteFragment : Fragment() {
             viewModel = this@CreateNoteFragment.viewModel
             noteConfirmFAB.setOnClickListener {
                 viewModel?.saveNewNote()
-                if (viewModel?.saveNoteJob?.isCompleted == true)navigateBack()
+                navigateBack()
             }
         }
     }

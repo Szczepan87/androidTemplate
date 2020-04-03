@@ -25,7 +25,6 @@ class CreateNoteViewModel(private val noteDAO: NoteDao) : ViewModel() {
             title = noteTitle.value ?: String.empty,
             content = noteContent.value ?: String.empty
         )
-
         saveNoteJob = viewModelScope.launch { saveNote(note) }
     }
 
