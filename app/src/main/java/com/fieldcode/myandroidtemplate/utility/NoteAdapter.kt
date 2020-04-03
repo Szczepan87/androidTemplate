@@ -3,8 +3,10 @@ package com.fieldcode.myandroidtemplate.utility
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.fieldcode.myandroidtemplate.R
 import com.fieldcode.myandroidtemplate.databinding.NoteCardBinding
 import com.fieldcode.myandroidtemplate.model.Note
+import kotlinx.android.synthetic.main.note_card.view.*
 
 class NoteAdapter :
     RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
@@ -13,7 +15,7 @@ class NoteAdapter :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val binding = NoteCardBinding.inflate(inflater)
+        val binding = NoteCardBinding.inflate(inflater, parent, false)
         return NoteViewHolder(binding)
     }
 

@@ -14,15 +14,16 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/note_card_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:elevation="10dp"
+        android:background="@drawable/card_shape">
 
         <TextView
             android:id="@+id/note_card_id_info_textView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/id"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            style="@style/NoteCardDetailsInfo"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -31,8 +32,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@{String.valueOf(note.uid)}"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            style="@style/NoteCardDetailsInfo"
             app:layout_constraintStart_toEndOf="@+id/note_card_id_info_textView"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -40,19 +40,18 @@
             android:id="@+id/note_card_date_info_textView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            style="@style/NoteCardDetailsInfo"
             android:text="@string/date"
-            app:layout_constraintStart_toEndOf="@+id/note_card_id_textView"
+            app:layout_constraintEnd_toStartOf="@+id/note_card_date_textView"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/note_card_date_textView"
+            noteCreationDate="@{note.date}"
+            style="@style/NoteCardDetailsInfo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="8dp"
-            app:layout_constraintStart_toEndOf="@+id/note_card_date_info_textView"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -60,13 +59,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@{note.title}"
-            android:textAlignment="center"
-            android:textSize="30sp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="8dp"
+            style="@style/NoteCardTitle"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/note_card_id_textView" />
 
@@ -74,10 +68,9 @@
             android:id="@+id/note_card_content_textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            style="@style/NoteCardDetailsInfo"
             android:text="@{note.content}"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/note_card_title_textView" />

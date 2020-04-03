@@ -8,4 +8,14 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="NoteCardDetailsInfo">
+        <item name="android:textColor">@color/colorCardText</item>
+        <item name="android:layout_margin">8dp</item>
+    </style>
+
+    <style name="NoteCardTitle" parent="NoteCardDetailsInfo">
+        <item name="android:textSize">30sp</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
 </resources>
