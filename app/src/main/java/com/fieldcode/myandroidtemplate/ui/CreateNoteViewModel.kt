@@ -16,19 +16,27 @@ class CreateNoteViewModel(private val noteDAO: NoteDao) : ViewModel() {
 
     val noteTitle = MutableLiveData(String.empty)
     val noteContent = MutableLiveData(String.empty)
-    lateinit var saveNoteJob: Job
+    val canSaveNote = MutableLiveData(false)
 
     fun saveNewNote() {
-        val note = Note(
-            0,
-            Date(),
-            title = noteTitle.value ?: String.empty,
-            content = noteContent.value ?: String.empty
-        )
-        saveNoteJob = viewModelScope.launch { saveNote(note) }
+        if (areFieldsFilled()) {
+            canSaveNote.value = true
+            val note = Note(
+                0,
+                Date(),
+                title = noteTitle.value ?: String.empty,
+                content = noteContent.value ?: String.empty
+            )
+            viewModelScope.launch { saveNote(note) }
+        } else canSaveNote.value = false
     }
 
     private suspend fun saveNote(note: Note) {
         withContext(Dispatchers.IO) { noteDAO.insertNote(note) }
     }
+
+    private fun areFieldsFilled() =
+        noteTitle.value?.isNotEmpty() == true && noteContent.value?.isNotEmpty() == true
+
+
 }

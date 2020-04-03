@@ -38,8 +38,10 @@ class CreateNoteFragment : Fragment() {
             lifecycleOwner = viewLifecycleOwner
             viewModel = this@CreateNoteFragment.viewModel
             noteConfirmFAB.setOnClickListener {
-                viewModel?.saveNewNote()
-                navigateBack()
+                if (viewModel?.canSaveNote?.value == true) {
+                    viewModel?.saveNewNote()
+                    navigateBack()
+                }
             }
         }
     }

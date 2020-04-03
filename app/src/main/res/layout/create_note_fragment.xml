@@ -19,16 +19,18 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/note_title_text_input_layout"
+            style="@style/InputTextField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/InputTextField"
             android:background="@color/colorInputTextField"
+            app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/note_title_text_input"
+                errorText="@{viewModel.canSaveNote ? null : @string/errorMessage}"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@={viewModel.noteTitle}" />
@@ -37,10 +39,11 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/note_content_input_layout"
+            style="@style/InputTextField"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            style="@style/InputTextField"
             android:background="@color/colorInputTextField"
+            app:errorEnabled="true"
             app:layout_constraintBottom_toTopOf="@+id/note_confirm_FAB"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -48,6 +51,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/note_content_input_text"
+                errorText="@{viewModel.canSaveNote ? null : @string/errorMessage}"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@={viewModel.noteContent}" />
@@ -63,9 +67,9 @@
             android:layout_weight="1"
             android:clickable="true"
             android:focusable="true"
+            android:src="@drawable/ic_save_white_32dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:src="@drawable/ic_save_white_32dp" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
