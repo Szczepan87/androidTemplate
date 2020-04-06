@@ -45,5 +45,4 @@ class CreateNoteFragment : Fragment() {
             }
         }
     }
-
 }

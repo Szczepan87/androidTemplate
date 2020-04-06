@@ -6,4 +6,8 @@
     <string name="id">Id:</string>
     <string name="date">Date:</string>
     <string name="errorMessage">Cannot be empty!</string>
+    <string name="app_drawer_menu_my_profile">My profile</string>
+    <string name="notes">Notes</string>
+    <string name="get_joke">Chuck joke</string>
+    <string name="menu">Menu</string>
 </resources>
