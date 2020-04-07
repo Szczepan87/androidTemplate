@@ -30,6 +30,11 @@ class NoteAdapter :
         notifyDataSetChanged()
     }
 
+    fun removeAt(position: Int) {
+        notes.removeAt(position)
+        notifyItemRemoved(position)
+    }
+
     inner class NoteViewHolder(private val binding: NoteCardBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(noteItem: Note) {

@@ -13,4 +13,10 @@ class NoteListViewModel(private val noteDao: NoteDao) : ViewModel() {
             noteDao.getAll()
         }
     }
+
+    suspend fun deleteFromDatabase(note: Note) {
+        withContext(Dispatchers.IO){
+            noteDao.delete(note)
+        }
+    }
 }
