@@ -34,9 +34,7 @@ class NoteAdapter :
     }
 
     fun removeAt(position: Int) {
-        notes.removeAt(position)
         onItemRemoved?.invoke(notes[position])
-        notifyItemRemoved(position)
     }
 
     inner class NoteViewHolder(private val binding: NoteCardBinding) :
@@ -48,8 +46,6 @@ class NoteAdapter :
                 noteCardContentTextView.text = noteItem.content
                 executePendingBindings()
             }
-
         }
-
     }
 }

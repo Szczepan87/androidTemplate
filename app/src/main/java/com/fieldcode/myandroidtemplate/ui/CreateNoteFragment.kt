@@ -9,13 +9,11 @@ import androidx.databinding.DataBindingUtil
 import com.fieldcode.myandroidtemplate.R
 import com.fieldcode.myandroidtemplate.databinding.CreateNoteFragmentBinding
 import com.fieldcode.myandroidtemplate.utility.navigateBack
-import com.fieldcode.myandroidtemplate.utility.navigateTo
-import org.koin.android.viewmodel.ext.android.getViewModel
-import java.util.*
+import org.koin.android.ext.android.get
 
 class CreateNoteFragment : Fragment() {
 
-    private lateinit var viewModel: CreateNoteViewModel
+    private val viewModel: CreateNoteViewModel = get()
     private lateinit var binding: CreateNoteFragmentBinding
 
     override fun onCreateView(
@@ -33,16 +31,17 @@ class CreateNoteFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = getViewModel()
         with(binding) {
             lifecycleOwner = viewLifecycleOwner
             viewModel = this@CreateNoteFragment.viewModel
-            noteConfirmFAB.setOnClickListener {
-                if (viewModel?.canSaveNote?.value == true) {
-                    viewModel?.saveNewNote()
-                    navigateBack()
-                }
-            }
+            setUpAddingFab()
+        }
+    }
+
+    private fun CreateNoteFragmentBinding.setUpAddingFab() {
+        noteConfirmFAB.setOnClickListener {
+            viewModel?.saveNewNote()
+            navigateBack()
         }
     }
 }
