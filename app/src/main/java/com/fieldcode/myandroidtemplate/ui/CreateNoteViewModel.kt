@@ -5,14 +5,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fieldcode.myandroidtemplate.model.Note
 import com.fieldcode.myandroidtemplate.repository.NoteDao
+import com.fieldcode.myandroidtemplate.repository.NoteRepository
 import com.fieldcode.myandroidtemplate.utility.empty
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.util.Date
 
-class CreateNoteViewModel(private val noteDAO: NoteDao) : ViewModel() {
+class CreateNoteViewModel(private val noteRepository: NoteRepository) : ViewModel() {
 
     val noteTitle = MutableLiveData(String.empty)
     val noteContent = MutableLiveData(String.empty)
@@ -32,7 +32,7 @@ class CreateNoteViewModel(private val noteDAO: NoteDao) : ViewModel() {
     }
 
     private suspend fun saveNote(note: Note) {
-        withContext(Dispatchers.IO) { noteDAO.insertNote(note) }
+        withContext(Dispatchers.IO) { noteRepository.insertNote(note) }
     }
 
     private fun areFieldsFilled() =

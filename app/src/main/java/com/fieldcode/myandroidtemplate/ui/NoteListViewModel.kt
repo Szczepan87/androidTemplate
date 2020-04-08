@@ -9,7 +9,13 @@ import kotlinx.coroutines.launch
 
 class NoteListViewModel(private val noteRepository: NoteRepository) : ViewModel() {
 
-    val notesList = noteRepository.notesList
+    var notesList = noteRepository.notesList
+
+    fun getNotesByTitle(title: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            notesList = noteRepository.getByTitle(title) ?: noteRepository.notesList
+        }
+    }
 
     fun deleteFromDatabase(note: Note) {
         viewModelScope.launch(Dispatchers.IO) {

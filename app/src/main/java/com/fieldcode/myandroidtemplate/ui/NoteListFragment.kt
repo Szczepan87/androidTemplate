@@ -31,11 +31,7 @@ class NoteListFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        swipeHandler = object : SwipeToDeleteCallback(requireContext()) {
-            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                adapter.removeAt(viewHolder.adapterPosition)
-            }
-        }
+        initiateSwipeHandler()
         itemTouchHelper = ItemTouchHelper(swipeHandler)
     }
 
@@ -65,5 +61,13 @@ class NoteListFragment : Fragment() {
     private fun setUpRecyclerView() {
         binding.noteListRecyclerView.adapter = adapter
         viewModel.notesList.observe(viewLifecycleOwner, noteListObserver)
+    }
+
+    private fun initiateSwipeHandler() {
+        swipeHandler = object : SwipeToDeleteCallback(requireContext()) {
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                adapter.removeAt(viewHolder.adapterPosition)
+            }
+        }
     }
 }
