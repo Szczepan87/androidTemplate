@@ -1,5 +1,6 @@
 package com.fieldcode.myandroidtemplate.repository
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
@@ -10,13 +11,13 @@ import com.fieldcode.myandroidtemplate.model.Note
 interface NoteDao {
 
     @Query("SELECT * FROM note")
-    fun getAll(): List<Note>
+    fun getAll(): LiveData<List<Note>>
 
     @Query("SELECT * FROM note WHERE uid = :noteId")
     fun getById(noteId: Int): Note
 
     @Query("SELECT * FROM note WHERE title LIKE :title")
-    fun getByTitle(title: String): List<Note>
+    fun getByTitle(title: String): LiveData<List<Note>>
 
     @Insert
     fun insertNote(note: Note)

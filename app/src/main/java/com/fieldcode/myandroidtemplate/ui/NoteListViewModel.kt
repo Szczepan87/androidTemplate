@@ -1,22 +1,19 @@
 package com.fieldcode.myandroidtemplate.ui
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.fieldcode.myandroidtemplate.model.Note
-import com.fieldcode.myandroidtemplate.repository.NoteDao
-import kotlinx.coroutines.withContext
+import com.fieldcode.myandroidtemplate.repository.NoteRepository
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
-class NoteListViewModel(private val noteDao: NoteDao) : ViewModel() {
+class NoteListViewModel(private val noteRepository: NoteRepository) : ViewModel() {
 
-    suspend fun provideDataFromDatabase(): List<Note> {
-        return withContext(Dispatchers.IO) {
-            noteDao.getAll()
-        }
-    }
+    val notesList = noteRepository.notesList
 
-    suspend fun deleteFromDatabase(note: Note) {
-        withContext(Dispatchers.IO){
-            noteDao.delete(note)
+    fun deleteFromDatabase(note: Note) {
+        viewModelScope.launch(Dispatchers.IO) {
+            noteRepository.delete(note)
         }
     }
 }

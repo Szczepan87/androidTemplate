@@ -8,10 +8,13 @@ import com.fieldcode.myandroidtemplate.databinding.NoteCardBinding
 import com.fieldcode.myandroidtemplate.model.Note
 import kotlinx.android.synthetic.main.note_card.view.*
 
+typealias OnItemRemoved = (Note) -> (Unit)
+
 class NoteAdapter :
     RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
 
     private val notes: MutableList<Note> = mutableListOf()
+    var onItemRemoved: OnItemRemoved? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -32,6 +35,7 @@ class NoteAdapter :
 
     fun removeAt(position: Int) {
         notes.removeAt(position)
+        onItemRemoved?.invoke(notes[position])
         notifyItemRemoved(position)
     }
 
