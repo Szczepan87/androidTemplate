@@ -11,6 +11,12 @@ class NoteListViewModel(private val noteRepository: NoteRepository) : ViewModel(
 
     var notesList = noteRepository.notesList
 
+    val sortAlphabetically = noteRepository.notesListSortByTitle
+
+    val sortByDateDescending = noteRepository.notesListSortByDateDSC
+
+    val sortByDateAscending = noteRepository.notesListSortByDateASC
+
     fun getNotesByTitle(title: String) {
         viewModelScope.launch(Dispatchers.IO) {
             notesList = noteRepository.getByTitle(title) ?: noteRepository.notesList
@@ -21,18 +27,6 @@ class NoteListViewModel(private val noteRepository: NoteRepository) : ViewModel(
         viewModelScope.launch(Dispatchers.IO) {
             noteRepository.delete(note)
         }
-    }
-
-    fun sortAlphabetically() {
-        notesList = noteRepository.notesListSortByTitle
-    }
-
-    fun sortByDateDescending() {
-        notesList = noteRepository.notesListSortByDateDSC
-    }
-
-    fun sortByDateAscending() {
-        notesList = noteRepository.notesListSortByDateASC
     }
 
 }

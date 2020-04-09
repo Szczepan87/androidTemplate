@@ -13,6 +13,8 @@ import com.fieldcode.myandroidtemplate.model.Note
 import com.fieldcode.myandroidtemplate.utility.NoteAdapter
 import com.fieldcode.myandroidtemplate.utility.SwipeToDeleteCallback
 import com.fieldcode.myandroidtemplate.utility.navigateTo
+import kotlinx.android.synthetic.*
+import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.ext.android.get
 
 class NoteListFragment : Fragment() {
@@ -29,6 +31,7 @@ class NoteListFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setHasOptionsMenu(true)
         initiateSwipeHandler()
         itemTouchHelper = ItemTouchHelper(swipeHandler)
@@ -78,15 +81,15 @@ class NoteListFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem) =
         when (item.itemId) {
             R.id.sort_alphabetically -> {
-                viewModel.sortAlphabetically()
+                viewModel.sortAlphabetically.observe(viewLifecycleOwner, noteListObserver)
                 true
             }
             R.id.sort_by_date_asc -> {
-                viewModel.sortByDateDescending()
+                viewModel.sortByDateDescending.observe(viewLifecycleOwner, noteListObserver)
                 true
             }
             R.id.sort_by_date_dsc -> {
-                viewModel.sortByDateAscending()
+                viewModel.sortByDateAscending.observe(viewLifecycleOwner, noteListObserver)
                 true
             }
             else -> super.onOptionsItemSelected(item)
