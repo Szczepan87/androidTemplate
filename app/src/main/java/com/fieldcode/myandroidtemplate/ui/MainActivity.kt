@@ -8,7 +8,9 @@ import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import com.fieldcode.myandroidtemplate.R
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.ext.android.inject
@@ -23,7 +25,8 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_main)
         navController = findNavController(R.id.nav_host_fragment)
-        setupActionBarWithNavController(navController, main_activity_drawerLayout)
+        val appBarConfiguration = AppBarConfiguration(navController.graph, main_activity_drawerLayout)
+        main_toolbar.setupWithNavController(navController, appBarConfiguration)
     }
 
     override fun onSupportNavigateUp(): Boolean {
