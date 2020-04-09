@@ -22,4 +22,17 @@ class NoteListViewModel(private val noteRepository: NoteRepository) : ViewModel(
             noteRepository.delete(note)
         }
     }
+
+    fun sortAlphabetically() {
+        notesList = noteRepository.notesListSortByTitle
+    }
+
+    fun sortByDateDescending() {
+        notesList = noteRepository.notesListSortByDateDSC
+    }
+
+    fun sortByDateAscending() {
+        notesList = noteRepository.notesListSortByDateASC
+    }
+
 }

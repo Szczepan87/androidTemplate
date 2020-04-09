@@ -10,4 +10,6 @@
     <string name="notes">Notes</string>
     <string name="get_joke">Chuck joke</string>
     <string name="menu">Menu</string>
+    <string name="sort_by_date">Sort by date</string>
+    <string name="sort_by_title">Sort by title</string>
 </resources>

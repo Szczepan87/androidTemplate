@@ -19,6 +19,15 @@ interface NoteDao {
     @Query("SELECT * FROM note WHERE title LIKE :title")
     fun getByTitle(title: String): LiveData<List<Note>>
 
+    @Query("SELECT * FROM note ORDER BY date")
+    fun getAllByDateDSC(): LiveData<List<Note>>
+
+    @Query("SELECT * FROM note ORDER BY date ASC")
+    fun getAllByDateASC(): LiveData<List<Note>>
+
+    @Query("SELECT * FROM note ORDER BY title")
+    fun getAllAlphabetically(): LiveData<List<Note>>
+
     @Insert
     fun insertNote(note: Note)
 

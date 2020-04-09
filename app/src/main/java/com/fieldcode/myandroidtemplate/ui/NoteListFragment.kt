@@ -1,10 +1,8 @@
 package com.fieldcode.myandroidtemplate.ui
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -31,6 +29,7 @@ class NoteListFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
         initiateSwipeHandler()
         itemTouchHelper = ItemTouchHelper(swipeHandler)
     }
@@ -69,5 +68,32 @@ class NoteListFragment : Fragment() {
                 adapter.removeAt(viewHolder.adapterPosition)
             }
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.note_list_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem) =
+        when (item.itemId) {
+            R.id.sort_alphabetically -> {
+                viewModel.sortAlphabetically()
+                true
+            }
+            R.id.sort_by_date_asc -> {
+                viewModel.sortByDateDescending()
+                true
+            }
+            R.id.sort_by_date_dsc -> {
+                viewModel.sortByDateAscending()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+
+    override fun onDestroy() {
+        viewModel.notesList.removeObservers(viewLifecycleOwner)
+        super.onDestroy()
     }
 }

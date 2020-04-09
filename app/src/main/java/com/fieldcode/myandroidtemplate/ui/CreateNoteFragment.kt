@@ -16,6 +16,12 @@ class CreateNoteFragment : Fragment() {
     private val viewModel: CreateNoteViewModel = get()
     private lateinit var binding: CreateNoteFragmentBinding
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        setHasOptionsMenu(false)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

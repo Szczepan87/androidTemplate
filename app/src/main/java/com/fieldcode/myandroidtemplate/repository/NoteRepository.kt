@@ -9,6 +9,11 @@ class NoteRepository(private val noteDao: NoteDao) {
 
     val notesList = noteDao.getAll()
 
+    val notesListSortByTitle = noteDao.getAllAlphabetically()
+
+    val notesListSortByDateASC = noteDao.getAllByDateASC()
+
+    val notesListSortByDateDSC = noteDao.getAllByDateASC()
     suspend fun getById(noteId: Int): Note? {
         var note: Note? = null
         withContext(Dispatchers.IO) { note = noteDao.getById(noteId) }

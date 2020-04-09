@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <group android:checkableBehavior="none">
+
+        <item
+            android:id="@+id/sort_by_date_dsc"
+            android:icon="@drawable/ic_arrow_upward_black_24dp"
+            android:title="@string/sort_by_date"
+            app:showAsAction="never" />
+
+        <item
+            android:id="@+id/sort_by_date_asc"
+            android:icon="@drawable/ic_arrow_downward_black_24dp"
+            android:title="@string/sort_by_date"
+            app:showAsAction="never" />
+
+        <item
+            android:id="@+id/sort_alphabetically"
+            android:icon="@drawable/ic_sort_by_alpha_black_24dp"
+            android:title="@string/sort_by_title"
+            app:showAsAction="never" />
+
+    </group>
+
+</menu>
