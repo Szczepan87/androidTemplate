@@ -81,15 +81,15 @@ class NoteListFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem) =
         when (item.itemId) {
             R.id.sort_alphabetically -> {
-                // TODO
+                adapter.sortByTitle()
                 true
             }
             R.id.sort_by_date_asc -> {
-                // TODO
+                adapter.sortByDate()
                 true
             }
             R.id.sort_by_date_dsc -> {
-                // TODO
+                adapter.sortByDateDesc()
                 true
             }
             else -> super.onOptionsItemSelected(item)

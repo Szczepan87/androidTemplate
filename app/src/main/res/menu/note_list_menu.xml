@@ -6,19 +6,16 @@
 
         <item
             android:id="@+id/sort_by_date_dsc"
-            android:icon="@drawable/ic_arrow_upward_black_24dp"
-            android:title="@string/sort_by_date"
+            android:title="@string/sort_from_newest"
             app:showAsAction="never" />
 
         <item
             android:id="@+id/sort_by_date_asc"
-            android:icon="@drawable/ic_arrow_downward_black_24dp"
-            android:title="@string/sort_by_date"
+            android:title="@string/sort_from_oldest"
             app:showAsAction="never" />
 
         <item
             android:id="@+id/sort_alphabetically"
-            android:icon="@drawable/ic_sort_by_alpha_black_24dp"
             android:title="@string/sort_by_title"
             app:showAsAction="never" />
 

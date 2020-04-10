@@ -37,6 +37,21 @@ class NoteAdapter :
         onItemRemoved?.invoke(notes[position])
     }
 
+    fun sortByTitle() {
+        notes.sortBy { it.title }
+        notifyDataSetChanged()
+    }
+
+    fun sortByDate() {
+        notes.sortBy { it.date }
+        notifyDataSetChanged()
+    }
+
+    fun sortByDateDesc(){
+        notes.sortByDescending { it.date }
+        notifyDataSetChanged()
+    }
+
     inner class NoteViewHolder(private val binding: NoteCardBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(noteItem: Note) {
