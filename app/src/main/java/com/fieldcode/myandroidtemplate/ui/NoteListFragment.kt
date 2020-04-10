@@ -5,6 +5,7 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.fieldcode.myandroidtemplate.R
@@ -34,6 +35,7 @@ class NoteListFragment : Fragment() {
 
         setHasOptionsMenu(true)
         initiateSwipeHandler()
+        requireActivity().title = getString(R.string.my_notes)
         itemTouchHelper = ItemTouchHelper(swipeHandler)
     }
 

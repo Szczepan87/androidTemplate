@@ -19,6 +19,7 @@ class CreateNoteFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        requireActivity().title = getString(R.string.create_note)
         setHasOptionsMenu(false)
     }
 

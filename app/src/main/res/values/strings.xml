@@ -13,4 +13,6 @@
     <string name="sort_by_title">Sort by title</string>
     <string name="sort_from_newest">Sort from newest</string>
     <string name="sort_from_oldest">Sort from oldest</string>
+    <string name="my_notes">My notes</string>
+    <string name="create_note">Create Note</string>
 </resources>

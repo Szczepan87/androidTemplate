@@ -10,7 +10,7 @@
     <fragment
         android:id="@+id/notesListFragment"
         android:name="com.fieldcode.myandroidtemplate.ui.NoteListFragment"
-        android:label="NotesListFragment" >
+        android:label="My Notes">
         <action
             android:id="@+id/action_notesListFragment_to_createNoteFragment"
             app:destination="@id/createNoteFragment" />
