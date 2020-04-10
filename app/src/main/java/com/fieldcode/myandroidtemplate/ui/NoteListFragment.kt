@@ -81,15 +81,15 @@ class NoteListFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem) =
         when (item.itemId) {
             R.id.sort_alphabetically -> {
-                viewModel.sortAlphabetically.observe(viewLifecycleOwner, noteListObserver)
+                // TODO
                 true
             }
             R.id.sort_by_date_asc -> {
-                viewModel.sortByDateDescending.observe(viewLifecycleOwner, noteListObserver)
+                // TODO
                 true
             }
             R.id.sort_by_date_dsc -> {
-                viewModel.sortByDateAscending.observe(viewLifecycleOwner, noteListObserver)
+                // TODO
                 true
             }
             else -> super.onOptionsItemSelected(item)
