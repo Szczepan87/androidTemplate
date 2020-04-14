@@ -31,6 +31,20 @@ class CreateNoteViewModel(private val noteRepository: NoteRepository) : ViewMode
         } else canSaveNote.value = false
     }
 
+    fun updateExistingNote(note: Note) {
+        val noteToUpdate = Note(
+            note.uid,
+            note.date,
+            noteTitle.value ?: String.empty,
+            noteContent.value ?: String.empty
+        )
+        viewModelScope.launch(Dispatchers.IO) { updateNote(noteToUpdate) }
+    }
+
+    private suspend fun updateNote(note: Note) {
+        withContext(Dispatchers.IO) { noteRepository.updateNote(note) }
+    }
+
     private suspend fun saveNote(note: Note) {
         withContext(Dispatchers.IO) { noteRepository.insertNote(note) }
     }
