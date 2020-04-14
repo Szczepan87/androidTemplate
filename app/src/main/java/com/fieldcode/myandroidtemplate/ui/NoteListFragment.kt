@@ -2,6 +2,7 @@ package com.fieldcode.myandroidtemplate.ui
 
 import android.os.Bundle
 import android.view.*
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -49,8 +50,9 @@ class NoteListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setUpRecyclerView()
 
+        setUpRecyclerView()
+        setUpIntent()
         with(binding) {
             lifecycleOwner = this@NoteListFragment
             viewModel = this@NoteListFragment.viewModel
@@ -73,6 +75,15 @@ class NoteListFragment : Fragment() {
                 adapter.removeAt(viewHolder.adapterPosition)
             }
         }
+    }
+
+    private fun setUpIntent() {
+        adapter.onEditNoteListener = { editNote(it) }
+    }
+
+    private fun editNote(note: Note?) {
+        val bundle = bundleOf(NOTE_KEY to note)
+        navigateTo(R.id.action_notesListFragment_to_createNoteFragment, bundle)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -100,5 +111,9 @@ class NoteListFragment : Fragment() {
     override fun onDestroy() {
         viewModel.notesList.removeObservers(viewLifecycleOwner)
         super.onDestroy()
+    }
+
+    companion object {
+        const val NOTE_KEY = "note"
     }
 }

@@ -37,6 +37,4 @@ class CreateNoteViewModel(private val noteRepository: NoteRepository) : ViewMode
 
     private fun areFieldsFilled() =
         noteTitle.value?.isNotEmpty() == true && noteContent.value?.isNotEmpty() == true
-
-
 }

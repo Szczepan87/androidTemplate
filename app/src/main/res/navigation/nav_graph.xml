@@ -6,7 +6,11 @@
     <fragment
         android:id="@+id/createNoteFragment"
         android:name="com.fieldcode.myandroidtemplate.ui.CreateNoteFragment"
-        android:label="CreateNoteFragment" />
+        android:label="CreateNoteFragment" >
+        <argument
+            android:name="note"
+            app:argType="com.fieldcode.myandroidtemplate.model.Note" />
+    </fragment>
     <fragment
         android:id="@+id/notesListFragment"
         android:name="com.fieldcode.myandroidtemplate.ui.NoteListFragment"

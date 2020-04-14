@@ -9,12 +9,14 @@ import com.fieldcode.myandroidtemplate.model.Note
 import kotlinx.android.synthetic.main.note_card.view.*
 
 typealias OnItemRemoved = (Note) -> (Unit)
+typealias OnEditNoteListener = (Note?) -> (Unit)
 
 class NoteAdapter :
     RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
 
     private val notes: MutableList<Note> = mutableListOf()
     var onItemRemoved: OnItemRemoved? = null
+    var onEditNoteListener: OnEditNoteListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -47,7 +49,7 @@ class NoteAdapter :
         notifyDataSetChanged()
     }
 
-    fun sortByDateDesc(){
+    fun sortByDateDesc() {
         notes.sortByDescending { it.date }
         notifyDataSetChanged()
     }
@@ -60,6 +62,10 @@ class NoteAdapter :
                 noteCardTitleTextView.text = noteItem.title
                 noteCardContentTextView.text = noteItem.content
                 executePendingBindings()
+                noteCardLayout.setOnLongClickListener {
+                    onEditNoteListener?.invoke(note)
+                    true
+                }
             }
         }
     }
