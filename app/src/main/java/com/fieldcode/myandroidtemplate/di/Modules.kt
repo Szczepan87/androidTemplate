@@ -6,6 +6,7 @@ import androidx.room.Room
 import com.fieldcode.myandroidtemplate.repository.NoteDatabase
 import com.fieldcode.myandroidtemplate.repository.NoteRepository
 import com.fieldcode.myandroidtemplate.ui.CreateNoteViewModel
+import com.fieldcode.myandroidtemplate.ui.JokeViewModel
 import com.fieldcode.myandroidtemplate.ui.NoteListViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.viewmodel.dsl.viewModel
@@ -20,6 +21,7 @@ val appModule = module {
 val viewModelModule = module {
     viewModel { CreateNoteViewModel(get()) }
     viewModel { NoteListViewModel(get()) }
+    viewModel { JokeViewModel() }
 }
 
 val databaseModule = module {

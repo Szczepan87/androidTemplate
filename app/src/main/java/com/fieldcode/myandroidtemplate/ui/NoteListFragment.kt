@@ -6,7 +6,6 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.fieldcode.myandroidtemplate.R
@@ -15,8 +14,6 @@ import com.fieldcode.myandroidtemplate.model.Note
 import com.fieldcode.myandroidtemplate.utility.NoteAdapter
 import com.fieldcode.myandroidtemplate.utility.SwipeToDeleteCallback
 import com.fieldcode.myandroidtemplate.utility.navigateTo
-import kotlinx.android.synthetic.*
-import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.ext.android.get
 
 class NoteListFragment : Fragment() {
