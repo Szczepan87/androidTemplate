@@ -3,12 +3,14 @@ package com.fieldcode.myandroidtemplate.ui
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.fieldcode.myandroidtemplate.R
@@ -26,7 +28,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(main_toolbar)
         navController = findNavController(R.id.nav_host_fragment)
-        val appBarConfiguration = AppBarConfiguration(navController.graph, main_activity_drawerLayout)
+        val appBarConfiguration =
+            AppBarConfiguration(navController.graph, main_activity_drawerLayout)
+        nav_view_global.setupWithNavController(navController)
         main_toolbar.setupWithNavController(navController, appBarConfiguration)
     }
 

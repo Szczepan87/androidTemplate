@@ -105,11 +105,6 @@ class NoteListFragment : Fragment() {
             else -> super.onOptionsItemSelected(item)
         }
 
-    override fun onDestroy() {
-        viewModel.notesList.removeObservers(viewLifecycleOwner)
-        super.onDestroy()
-    }
-
     companion object {
         const val NOTE_KEY = "note"
     }

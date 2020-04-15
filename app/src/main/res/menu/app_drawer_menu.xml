@@ -11,13 +11,13 @@
             app:showAsAction="never" />
 
         <item
-            android:id="@+id/menu_notes"
+            android:id="@id/notesListFragment"
             android:icon="@drawable/ic_note_white_24dp"
             android:title="@string/notes"
             app:showAsAction="never" />
 
         <item
-            android:id="@+id/menu_get_joke"
+            android:id="@id/jokeFragment"
             android:icon="@drawable/ic_funny_white_24dp"
             android:title="@string/get_joke"
             app:showAsAction="never" />
