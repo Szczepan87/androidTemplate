@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
-    app:startDestination="@id/notesListFragment">
+    app:startDestination="@id/jokeFragment">
 
     <fragment
         android:id="@+id/createNoteFragment"
@@ -19,4 +19,8 @@
             android:id="@+id/action_notesListFragment_to_createNoteFragment"
             app:destination="@id/createNoteFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/jokeFragment"
+        android:name="com.fieldcode.myandroidtemplate.ui.JokeFragment"
+        android:label="JokeFragment" />
 </navigation>

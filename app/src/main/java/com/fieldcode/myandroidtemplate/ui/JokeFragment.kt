@@ -6,10 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import org.koin.android.ext.android.get
 
 import com.fieldcode.myandroidtemplate.R
 import com.fieldcode.myandroidtemplate.databinding.FragmentJokeBinding
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class JokeFragment : Fragment() {
 
@@ -27,9 +30,13 @@ class JokeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        with(binding){
+        with(binding) {
             viewModel = this@JokeFragment.viewModel
             lifecycleOwner = this@JokeFragment.viewLifecycleOwner
+            GlobalScope.launch { viewModel?.getJoke() }
+            viewModel?.joke?.observe(
+                viewLifecycleOwner,
+                Observer { jokeContent.text = it.joke })
         }
     }
 }
