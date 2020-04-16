@@ -10,8 +10,10 @@ import com.fieldcode.myandroidtemplate.repository.NoteRepository
 import com.fieldcode.myandroidtemplate.ui.CreateNoteViewModel
 import com.fieldcode.myandroidtemplate.ui.JokeViewModel
 import com.fieldcode.myandroidtemplate.ui.NoteListViewModel
+import com.fieldcode.myandroidtemplate.utility.InternetConnectionChecker
 import com.google.gson.Gson
 import okhttp3.OkHttpClient
+import org.koin.android.ext.koin.androidApplication
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -38,6 +40,10 @@ val databaseModule = module {
 val netModule = module {
     single { provideRetrofit() }
     single { JokeRepository(get()) }
+}
+
+val internetConnectionCheckerModule = module {
+    single { InternetConnectionChecker(get()) }
 }
 
 private fun provideNoteDAO(context: Context) = Room.databaseBuilder(
