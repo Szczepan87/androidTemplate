@@ -5,7 +5,7 @@
 
     <fragment
         android:id="@+id/createNoteFragment"
-        android:name="com.fieldcode.myandroidtemplate.ui.CreateNoteFragment"
+        android:name="com.fieldcode.myandroidtemplate.ui.createnote.CreateNoteFragment"
         android:label="CreateNoteFragment" >
         <argument
             android:name="note"
@@ -13,7 +13,7 @@
     </fragment>
     <fragment
         android:id="@+id/notesListFragment"
-        android:name="com.fieldcode.myandroidtemplate.ui.NoteListFragment"
+        android:name="com.fieldcode.myandroidtemplate.ui.notelist.NoteListFragment"
         android:label="My Notes">
         <action
             android:id="@+id/action_notesListFragment_to_createNoteFragment"
@@ -24,6 +24,6 @@
     </fragment>
     <fragment
         android:id="@+id/jokeFragment"
-        android:name="com.fieldcode.myandroidtemplate.ui.JokeFragment"
+        android:name="com.fieldcode.myandroidtemplate.ui.joke.JokeFragment"
         android:label="JokeFragment" />
 </navigation>

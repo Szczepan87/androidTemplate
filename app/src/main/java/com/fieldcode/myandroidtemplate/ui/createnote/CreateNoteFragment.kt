@@ -1,4 +1,4 @@
-package com.fieldcode.myandroidtemplate.ui
+package com.fieldcode.myandroidtemplate.ui.createnote
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,8 +9,7 @@ import androidx.databinding.DataBindingUtil
 import com.fieldcode.myandroidtemplate.R
 import com.fieldcode.myandroidtemplate.databinding.CreateNoteFragmentBinding
 import com.fieldcode.myandroidtemplate.model.Note
-import com.fieldcode.myandroidtemplate.utility.empty
-import com.fieldcode.myandroidtemplate.utility.navigateBack
+import com.fieldcode.myandroidtemplate.ui.notelist.NoteListFragment
 import org.koin.android.ext.android.get
 
 class CreateNoteFragment : Fragment() {

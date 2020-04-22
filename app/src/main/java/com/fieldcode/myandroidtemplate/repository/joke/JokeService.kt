@@ -1,4 +1,4 @@
-package com.fieldcode.myandroidtemplate.repository
+package com.fieldcode.myandroidtemplate.repository.joke
 
 import com.fieldcode.myandroidtemplate.model.JokeResponse
 import retrofit2.Response

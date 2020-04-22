@@ -1,4 +1,6 @@
-package com.fieldcode.myandroidtemplate.repository
+package com.fieldcode.myandroidtemplate.repository.joke
+
+import com.fieldcode.myandroidtemplate.repository.BaseRepository
 
 class JokeRepository(private val service: JokeService) : BaseRepository() {
 

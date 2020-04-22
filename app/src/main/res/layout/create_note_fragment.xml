@@ -8,14 +8,14 @@
 
         <variable
             name="viewModel"
-            type="com.fieldcode.myandroidtemplate.ui.CreateNoteViewModel" />
+            type="com.fieldcode.myandroidtemplate.ui.createnote.CreateNoteViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/crate_note_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.CreateNoteFragment">
+        tools:context=".ui.createnote.CreateNoteFragment">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/note_title_text_input_layout"

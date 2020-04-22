@@ -1,7 +1,7 @@
-package com.fieldcode.myandroidtemplate.repository
+package com.fieldcode.myandroidtemplate.repository.note
 
-import androidx.lifecycle.LiveData
 import com.fieldcode.myandroidtemplate.model.Note
+import com.fieldcode.myandroidtemplate.repository.note.NoteDao
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 

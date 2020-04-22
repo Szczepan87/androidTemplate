@@ -1,4 +1,4 @@
-package com.fieldcode.myandroidtemplate.ui
+package com.fieldcode.myandroidtemplate.ui.notelist
 
 import android.os.Bundle
 import android.view.*

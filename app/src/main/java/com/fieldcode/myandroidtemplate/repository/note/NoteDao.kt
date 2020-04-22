@@ -1,4 +1,4 @@
-package com.fieldcode.myandroidtemplate.repository
+package com.fieldcode.myandroidtemplate.repository.note
 
 import androidx.lifecycle.LiveData
 import androidx.room.*

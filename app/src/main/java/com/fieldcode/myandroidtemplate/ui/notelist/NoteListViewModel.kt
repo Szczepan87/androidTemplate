@@ -1,9 +1,9 @@
-package com.fieldcode.myandroidtemplate.ui
+package com.fieldcode.myandroidtemplate.ui.notelist
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fieldcode.myandroidtemplate.model.Note
-import com.fieldcode.myandroidtemplate.repository.NoteRepository
+import com.fieldcode.myandroidtemplate.repository.note.NoteRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

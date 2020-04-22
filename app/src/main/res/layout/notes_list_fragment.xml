@@ -8,14 +8,14 @@
 
         <variable
             name="viewModel"
-            type="com.fieldcode.myandroidtemplate.ui.NoteListViewModel" />
+            type="com.fieldcode.myandroidtemplate.ui.notelist.NoteListViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/note_list_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.NoteListFragment">
+        tools:context=".ui.notelist.NoteListFragment">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/note_list_recyclerView"

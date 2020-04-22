@@ -8,13 +8,13 @@
 
         <variable
             name="viewModel"
-            type="com.fieldcode.myandroidtemplate.ui.JokeViewModel" />
+            type="com.fieldcode.myandroidtemplate.ui.joke.JokeViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.JokeFragment">
+        tools:context=".ui.joke.JokeFragment">
 
         <TextView
             android:id="@+id/joke_content"

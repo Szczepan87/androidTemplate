@@ -3,17 +3,16 @@ package com.fieldcode.myandroidtemplate.di
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.room.Room
-import com.fieldcode.myandroidtemplate.repository.JokeRepository
-import com.fieldcode.myandroidtemplate.repository.JokeService
-import com.fieldcode.myandroidtemplate.repository.NoteDatabase
-import com.fieldcode.myandroidtemplate.repository.NoteRepository
-import com.fieldcode.myandroidtemplate.ui.CreateNoteViewModel
-import com.fieldcode.myandroidtemplate.ui.JokeViewModel
-import com.fieldcode.myandroidtemplate.ui.NoteListViewModel
+import com.fieldcode.myandroidtemplate.repository.joke.JokeRepository
+import com.fieldcode.myandroidtemplate.repository.joke.JokeService
+import com.fieldcode.myandroidtemplate.repository.note.NoteDatabase
+import com.fieldcode.myandroidtemplate.repository.note.NoteRepository
+import com.fieldcode.myandroidtemplate.ui.createnote.CreateNoteViewModel
+import com.fieldcode.myandroidtemplate.ui.joke.JokeViewModel
+import com.fieldcode.myandroidtemplate.ui.notelist.NoteListViewModel
 import com.fieldcode.myandroidtemplate.utility.InternetConnectionChecker
 import com.google.gson.Gson
 import okhttp3.OkHttpClient
-import org.koin.android.ext.koin.androidApplication
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -27,9 +26,18 @@ val appModule = module {
 }
 
 val viewModelModule = module {
-    viewModel { CreateNoteViewModel(get()) }
+    viewModel {
+        CreateNoteViewModel(
+            get()
+        )
+    }
     viewModel { NoteListViewModel(get()) }
-    viewModel { JokeViewModel(get()) }
+    viewModel {
+        JokeViewModel(
+            get(),
+            get()
+        )
+    }
 }
 
 val databaseModule = module {

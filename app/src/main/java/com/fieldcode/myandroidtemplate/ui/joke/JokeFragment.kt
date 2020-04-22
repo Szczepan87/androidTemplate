@@ -1,4 +1,4 @@
-package com.fieldcode.myandroidtemplate.ui
+package com.fieldcode.myandroidtemplate.ui.joke
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,13 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import org.koin.android.ext.android.get
 
 import com.fieldcode.myandroidtemplate.R
 import com.fieldcode.myandroidtemplate.databinding.FragmentJokeBinding
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 class JokeFragment : Fragment() {
 
